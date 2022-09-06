@@ -1,0 +1,172 @@
+@import url('http://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900&display=swap');
+*
+
+/*  "*" 表示網頁html中所有標籤意思。 */
+    {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth
+        /* explore --> sec 使用scroll smooth效果*/
+
+}
+
+body {
+    /* 層疊樣式表*/
+    /* vh、vw依視窗的高度是變動的 */
+    min-height: 100vh;
+    background: linear-gradient(#2b1055, #7597de);
+    overflow-x: hidden;
+    /* 因使用scroll方法時，向下滑動時同時會向右滑，
+    導致額外的背景跑出來，把多出來的背景需隱藏 */
+}
+
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* padding: 上下 左右 */
+    padding: 30px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    /* z-index:當元素之間重疊的時候，
+    z-index 較大的元素會覆蓋較小的元素在上層進行顯示。*/
+}
+
+header .logo {
+    color: #ffffff;
+    font-weight: 700;
+    text-decoration: none;
+    /* 2em means 2 times the size of the current font */
+    font-size: 2em;
+    /* 全大寫 */
+    text-transform: uppercase;
+    /* 字母間距 */
+    letter-spacing: 2px;
+}
+
+header ul {
+    /* 完全置中 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header ul li {
+    /* 移除清單前面的原點 */
+    list-style: none;
+    margin-left: 20px;
+}
+
+header ul li a {
+    text-decoration: none;
+    padding: 6px 15px;
+    color: #ffffff;
+    border-radius: 20px;
+    /* 清單邊界半徑: 方->圓*/
+}
+
+header ul li a:hover,
+header ul li a.active {
+    /* CSS :hover Selector：
+    Select and style a link when you mouse over it: */
+    background: #ffffff;
+    color: #2b1055;
+}
+
+section {
+    /* "position"的relative、absolute屬性
+    https://ithelp.ithome.com.tw/articles/10212202 */
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    padding: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    /* overflow: hidden:修正"Explore"向下滑動時，到下個頁面會跑出來的問題 */
+}
+
+/* 將不同背景圖片之間的交界處做處理 */
+/* "::before" creates a pseudo-element that is the first child of the selected element. 
+     It is often used to add cosmetic content to an element with the content property. */
+section::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    /* linear-gradient:(從下到上,黑 -> 透明) */
+    background: linear-gradient(to top, #1c0522, transparent);
+    z-index: 1000;
+}
+
+section img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+    /* pointer-events:指定在什麼情況下 (如果有) 
+    某個特定的圖形元素可以成為鼠標事件的 */
+}
+
+section img#moon {
+    /* "mix-blend-mode"
+    元素的內容、元素的直系父的內容、元素的背景混合。 */
+    mix-blend-mode: screen;
+}
+
+section img#mountains_front {
+    z-index: 10;
+}
+
+#text {
+    position: absolute;
+    right: -500px;
+    color: #ffffff;
+    white-space: nowrap;
+    /* white-space：設置如何處理元素內的空白。
+    詳:https://www.w3school.com.cn/cssref/pr_text_white-space.asp*/
+    font-size: 7.5vw;
+    z-index: 9;
+
+}
+
+#btn {
+    text-decoration: none;
+    display: inline-block;
+    /* display:inline、block、inline-block的差別：
+    https://ytclion.medium.com/css%E6%95%99%E5%AD%B8-%E9%97%9C%E6%96%BCdisplay-inline-inline-block-block%E7%9A%84%E5%B7%AE%E5%88%A5-1034f38eda82 */
+    padding: 8px 30px;
+    border-radius: 40px;
+    background: #ffffff;
+    color: #2b1055;
+    font-size: 1.5em;
+    z-index: 9;
+    transform: translate(0, 100px);
+}
+
+.sec {
+    position: relative;
+    padding: 100px;
+    background: #1c0522;
+}
+
+.sec h2 {
+    font-size: 3.5em;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.sec p {
+    font-size: 1.2em;
+    color: #ffffff;
+}
